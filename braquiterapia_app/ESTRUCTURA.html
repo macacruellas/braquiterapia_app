@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura del Proyecto - Braquiterapia</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #2d3748;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .tree {
+            font-family: 'Courier New', monospace;
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            overflow-x: auto;
+        }
+        
+        .tree-line {
+            padding: 4px 0;
+            white-space: pre;
+            font-size: 14px;
+        }
+        
+        .folder {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .file {
+            color: #2d3748;
+        }
+        
+        .python {
+            color: #3b82f6;
+        }
+        
+        .config {
+            color: #10b981;
+        }
+        
+        .template {
+            color: #f59e0b;
+        }
+        
+        .static {
+            color: #8b5cf6;
+        }
+        
+        .description {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .module {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .module h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .module ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .icon {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            padding: 20px;
+            background: #eef2ff;
+            border-radius: 12px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗂️ Estructura del Proyecto Reorganizado</h1>
+            <p>Arquitectura modular del sistema de Braquiterapia</p>
+        </div>
+        
+        <div class="content">
+            <h2 style="margin-bottom: 20px; color: #667eea;">📁 Árbol de Archivos</h2>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #667eea;"></div>
+                    <span>Carpetas</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3b82f6;"></div>
+                    <span>Python</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #10b981;"></div>
+                    <span>Configuración</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f59e0b;"></div>
+                    <span>Templates</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #8b5cf6;"></div>
+                    <span>Estáticos</span>
+                </div>
+            </div>
+            
+            <div class="tree">
+<div class="tree-line"><span class="folder">braquiterapia_app/</span></div>
+<div class="tree-line">│</div>
+<div class="tree-line">├── <span class="python">run.py</span>                      <span style="color: #64748b;">← Punto de entrada principal</span></div>
+<div class="tree-line">├── <span class="config">requirements.txt</span>            <span style="color: #64748b;">← Dependencias del proyecto</span></div>
+<div class="tree-line">├── <span class="file">README.md</span>                   <span style="color: #64748b;">← Documentación</span></div>
+<div class="tree-line">│</div>
+<div class="tree-line">├── <span class="folder">config/</span>                    <span style="color: #64748b;">← Configuración global</span></div>
+<div class="tree-line">│   └── <span class="config">settings.py</span>           <span style="color: #64748b;">← Límites, constantes, parámetros</span></div>
+<div class="tree-line">│</div>
+<div class="tree-line">└── <span class="folder">app/</span>                        <span style="color: #64748b;">← Aplicación principal</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    ├── <span class="python">__init__.py</span>            <span style="color: #64748b;">← Inicialización Flask (factory)</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    ├── <span class="folder">routes/</span>                <span style="color: #64748b;">← Rutas HTTP (blueprints)</span></div>
+<div class="tree-line">    │   ├── <span class="python">__init__.py</span></div>
+<div class="tree-line">    │   ├── <span class="python">main_routes.py</span>     <span style="color: #64748b;">← Ruta principal (home)</span></div>
+<div class="tree-line">    │   ├── <span class="python">dvh_routes.py</span>      <span style="color: #64748b;">← Carga DVH, cálculos</span></div>
+<div class="tree-line">    │   └── <span class="python">export_routes.py</span>   <span style="color: #64748b;">← Exportación cartón/informe</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    ├── <span class="folder">parsers/</span>               <span style="color: #64748b;">← Parsers de archivos DVH</span></div>
+<div class="tree-line">    │   ├── <span class="python">__init__.py</span></div>
+<div class="tree-line">    │   ├── <span class="python">eclipse_parser.py</span>  <span style="color: #64748b;">← Parser DVH Eclipse</span></div>
+<div class="tree-line">    │   └── <span class="python">oncentra_parser.py</span> <span style="color: #64748b;">← Parser DVH Oncentra</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    ├── <span class="folder">calculations/</span>          <span style="color: #64748b;">← Módulos de cálculo físico</span></div>
+<div class="tree-line">    │   ├── <span class="python">__init__.py</span></div>
+<div class="tree-line">    │   └── <span class="python">dosimetry.py</span>       <span style="color: #64748b;">← EQD2, BED, dosis máxima</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    ├── <span class="folder">utils/</span>                 <span style="color: #64748b;">← Utilidades generales</span></div>
+<div class="tree-line">    │   ├── <span class="python">__init__.py</span></div>
+<div class="tree-line">    │   ├── <span class="python">helpers.py</span>         <span style="color: #64748b;">← Funciones auxiliares</span></div>
+<div class="tree-line">    │   ├── <span class="python">roi_mapping.py</span>     <span style="color: #64748b;">← Aliases y mapeo de ROIs</span></div>
+<div class="tree-line">    │   └── <span class="python">file_handlers.py</span>   <span style="color: #64748b;">← Manejo Excel/PDF</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    ├── <span class="folder">templates/</span>             <span style="color: #64748b;">← Templates HTML (Jinja2)</span></div>
+<div class="tree-line">    │   ├── <span class="template">base.html</span>            <span style="color: #64748b;">← Template base</span></div>
+<div class="tree-line">    │   ├── <span class="template">home.html</span>            <span style="color: #64748b;">← Página principal</span></div>
+<div class="tree-line">    │   ├── <span class="file">Cartón dosimétrico.xlsx</span></div>
+<div class="tree-line">    │   └── <span class="file">Plantilla informe medico.xlsx</span></div>
+<div class="tree-line">    │</div>
+<div class="tree-line">    └── <span class="folder">static/</span>                <span style="color: #64748b;">← Archivos estáticos</span></div>
+<div class="tree-line">        ├── <span class="folder">css/</span></div>
+<div class="tree-line">        │   └── <span class="static">styles.css</span>        <span style="color: #64748b;">← Estilos CSS</span></div>
+<div class="tree-line">        └── <span class="folder">js/</span></div>
+<div class="tree-line">            └── <span class="static">main.js</span>           <span style="color: #64748b;">← JavaScript interactividad</span></div>
+            </div>
+            
+            <h2 style="margin: 40px 0 20px; color: #667eea;">📦 Descripción de Módulos</h2>
+            
+            <div class="description">
+                <div class="module">
+                    <h3><span class="icon">🛣️</span>Routes (Rutas)</h3>
+                    <ul>
+                        <li><strong>main_routes.py:</strong> Página de inicio</li>
+                        <li><strong>dvh_routes.py:</strong> Carga de DVH, cálculos EQD2</li>
+                        <li><strong>export_routes.py:</strong> Generación de informes</li>
+                    </ul>
+                </div>
+                
+                <div class="module">
+                    <h3><span class="icon">📄</span>Parsers</h3>
+                    <ul>
+                        <li><strong>eclipse_parser.py:</strong> Lee archivos .txt de Eclipse</li>
+                        <li><strong>oncentra_parser.py:</strong> Lee archivos .txt de Oncentra</li>
+                        <li>Extracción de DVH, metadatos de pacientes</li>
+                    </ul>
+                </div>
+                
+                <div class="module">
+                    <h3><span class="icon">🧮</span>Calculations</h3>
+                    <ul>
+                        <li><strong>dosimetry.py:</strong> Cálculos físicos</li>
+                        <li>EQD2, BED, dosis por fracción</li>
+                        <li>Ecuaciones cuadráticas para HDR</li>
+                    </ul>
+                </div>
+                
+                <div class="module">
+                    <h3><span class="icon">🔧</span>Utils</h3>
+                    <ul>
+                        <li><strong>helpers.py:</strong> Conversiones, validaciones</li>
+                        <li><strong>roi_mapping.py:</strong> Mapeo ES/EN de ROIs</li>
+                        <li><strong>file_handlers.py:</strong> Excel, PDF, LibreOffice</li>
+                    </ul>
+                </div>
+                
+                <div class="module">
+                    <h3><span class="icon">🎨</span>Templates & Static</h3>
+                    <ul>
+                        <li><strong>base.html:</strong> Layout base con CSS/JS</li>
+                        <li><strong>styles.css:</strong> Diseño moderno, responsive</li>
+                        <li><strong>main.js:</strong> Interactividad del frontend</li>
+                    </ul>
+                </div>
+                
+                <div class="module">
+                    <h3><span class="icon">⚙️</span>Config</h3>
+                    <ul>
+                        <li><strong>settings.py:</strong> Configuración centralizada</li>
+                        <li>Límites de dosis, constantes α/β</li>
+                        <li>Valores por defecto del sistema</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+                <h2 style="margin-bottom: 15px;">✨ Ventajas de esta Estructura</h2>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li>✅ <strong>Modularidad:</strong> Cada módulo tiene una responsabilidad clara</li>
+                    <li>✅ <strong>Mantenibilidad:</strong> Fácil encontrar y modificar código</li>
+                    <li>✅ <strong>Escalabilidad:</strong> Agregar features sin tocar código existente</li>
+                    <li>✅ <strong>Testing:</strong> Cada módulo se puede testear independientemente</li>
+                    <li>✅ <strong>Colaboración:</strong> Múltiples personas pueden trabajar en paralelo</li>
+                    <li>✅ <strong>Separación de concerns:</strong> Lógica, presentación y datos separados</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

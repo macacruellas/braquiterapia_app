@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Servidor Braquiterapia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>
+                <span style="color:#67e8f9">
+                    <span class="badge">Cálculo dosimétrico Braquiterapia</span>
+                </span>
+            </h1>
+            
+            {% if error %}
+            <div class="card" style="margin:12px 0; border-color: rgba(248,113,113,.6); background:rgba(248,113,113,.08)">
+                <p class="warn">⚠ {{ error }}</p>
+            </div>
+            {% endif %}
+            
+            <div class="lead">
+                <p><strong>Este servidor permite subir el plan de radioterapia externa</strong> con el fin de calcular cuáles serán las dosis máximas permitidas por sesión en la braquiterapia. Una vez que se planifica la braquiterapia, también es posible ingresar los datos correspondientes para obtener la suma total de dosis en EQD2.</p>
+            </div>
+            
+            {% block content %}
+            <!-- El contenido específico de cada página va aquí -->
+            {% endblock %}
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
