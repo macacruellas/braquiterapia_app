@@ -29,5 +29,5 @@ DEBUG = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
 
 # ====== Rutas de plantillas ======
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_CARTON = os.path.join(BASE_DIR, "templates", "Cartón dosimétrico.xlsx")
-TEMPLATE_INFORME = os.path.join(BASE_DIR, "templates", "Plantilla informe medico.xlsx")
+TEMPLATE_CARTON = os.path.join(BASE_DIR, "app", "templates", "Cartón dosimétrico.xlsx")
+TEMPLATE_INFORME = os.path.join(BASE_DIR, "app", "templates", "Plantilla informe medico.xlsx")

@@ -47,7 +47,15 @@ def export_carton():
     
     # Verificar que existe la plantilla
     if not os.path.exists(TEMPLATE_CARTON):
-        return f"Plantilla no encontrada: {TEMPLATE_CARTON}", 500
+    # Debug: mostrar la ruta completa que está buscando
+        import sys
+        return f"""
+    <h2>Error: Plantilla no encontrada</h2>
+    <p><strong>Ruta buscada:</strong> {TEMPLATE_CARTON}</p>
+    <p><strong>¿Existe el archivo?:</strong> {os.path.exists(TEMPLATE_CARTON)}</p>
+    <p><strong>Directorio de trabajo actual:</strong> {os.getcwd()}</p>
+    <p>Por favor, asegurate de que el archivo "Cartón dosimétrico.xlsx" esté en la carpeta app/templates/</p>
+    """, 500
     
     # Abrir plantilla
     wb = load_workbook(TEMPLATE_CARTON)
