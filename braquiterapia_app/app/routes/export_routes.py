@@ -44,6 +44,7 @@ def export_carton():
     summary = data.get("summary") or []
     ebrt = data.get("ebrt") or []
     hdr_fractions = data.get("hdr_fractions") or []
+
     
     # Verificar que existe la plantilla
     if not os.path.exists(TEMPLATE_CARTON):
@@ -126,8 +127,7 @@ def export_carton():
     
     for roi_excel, row_idx in row_map_hdr.items():
         item = match_roi(roi_excel)
-        eqd2s = [round_2_decimals(v) for v in item["eqd2s"]] if item else []
-        
+        doses = [round_2_decimals(v) for v in item["doses"]] if item else []
         for j in range(4):  # 4 sesiones máximo
             col = session_cols[j]
             cell = ws.cell(row=row_idx, column=col)
@@ -143,8 +143,8 @@ def export_carton():
                         )
                         break
             
-            if j < len(eqd2s) and eqd2s[j] is not None:
-                cell.value = eqd2s[j]
+            if j < len(doses) and doses[j] is not None:
+                cell.value = doses[j]
             else:
                 cell.value = "-"
             

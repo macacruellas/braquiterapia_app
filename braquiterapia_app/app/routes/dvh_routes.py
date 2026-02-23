@@ -501,6 +501,7 @@ def calcular_hdr():
         "hdr_fractions": [
             {
                 "roi": getattr(r, "roi", ""),
+                "doses": [_sf(x) for x in getattr(r, "doses", [])],
                 "eqd2s": [_sf(x) for x in getattr(r, "eqd2s", [])],
             }
             for r in plan
