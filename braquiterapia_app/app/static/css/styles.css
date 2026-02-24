@@ -48,7 +48,7 @@ body {
 /* Tipografía */
 h1 {
     margin: 0 0 10px;
-    font-size: calc(24px + var(--inc));
+    font-size: calc(32px + var(--inc));
 }
 
 h3 {
@@ -233,7 +233,7 @@ textarea {
     display: inline-block;
     padding: 4px 8px;
     border-radius: 6px;
-    font-size: calc(12px + var(--inc));
+    font-size: calc(28px + var(--inc));
     margin-left: 4px;
 }
 
