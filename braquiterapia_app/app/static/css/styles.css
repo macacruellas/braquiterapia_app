@@ -233,7 +233,7 @@ textarea {
     display: inline-block;
     padding: 4px 8px;
     border-radius: 6px;
-    font-size: calc(12px + var(--inc));
+    font-size: calc(28px + var(--inc));
     margin-left: 4px;
 }
 
