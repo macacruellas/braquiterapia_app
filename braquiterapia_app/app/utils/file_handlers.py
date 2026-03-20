@@ -210,8 +210,11 @@ def write_to_excel_cell(wb, sheet_name, cell, value, alignment='center'):
     
     # Manejar celdas combinadas
     if isinstance(cell_obj, MergedCell):
+        from openpyxl.utils import coordinate_to_tuple
+        cell_row, cell_col = coordinate_to_tuple(cell)
         for merged_range in ws.merged_cells.ranges:
-            if cell in str(merged_range):
+            if (merged_range.min_row <= cell_row <= merged_range.max_row and
+                    merged_range.min_col <= cell_col <= merged_range.max_col):
                 top_left = ws.cell(
                     row=merged_range.min_row,
                     column=merged_range.min_col
