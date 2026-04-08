@@ -1,0 +1,271 @@
+/* ====================================================
+   Estilos para la aplicación de Braquiterapia
+   ==================================================== */
+
+/* Variables CSS para colores y espaciado */
+:root {
+    --bg: #0f172a;
+    --card: #111827;
+    --muted: #94a3b8;
+    --text: #e5e7eb;
+    --acc: #22d3ee;
+    --acc2: #38bdf8;
+    --err: #f87171;
+    --ok: #34d399;
+    --inc: 3pt; /* Incremento de tamaño de fuente */
+}
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+/* Estilos del body */
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
+    background: radial-gradient(1200px 800px at 20% -10%, #0b1b2b 0%, var(--bg) 45%), var(--bg);
+    color: var(--text);
+    font-size: calc(16px + var(--inc));
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 980px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Tarjetas */
+.card {
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+
+/* Tipografía */
+h1 {
+    margin: 0 0 10px;
+    font-size: calc(24px + var(--inc));
+}
+
+h3 {
+    margin: 6px 0 8px 0;
+    color: #a5f3fc;
+    font-size: calc(18px + var(--inc));
+}
+
+h4 {
+    margin: 0 0 12px 0;
+    font-size: calc(16px + var(--inc));
+}
+
+.lead {
+    margin: 0 0 18px;
+    color: var(--muted);
+}
+
+/* Layout */
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-5 {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* Inputs y formularios */
+.input,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #0b1220;
+    color: var(--text);
+    font-size: calc(14px + var(--inc));
+}
+
+textarea {
+    min-height: 140px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+/* Botones */
+.btn {
+    appearance: none;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: calc(14px + var(--inc));
+}
+
+.btn-primary {
+    background: linear-gradient(180deg, var(--acc), var(--acc2));
+    color: #05232f;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    transition: all 0.2s;
+}
+
+/* Tablas */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    border: 1px solid rgba(255,255,255,.25);
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.15);
+    text-align: left;
+    font-size: calc(14px + var(--inc));
+}
+
+.table th[colspan] {
+    text-align: center;
+}
+
+/* Tablas con layout fijo */
+.table-fixed-layout,
+.table-summary {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-fixed-layout th:first-child,
+.table-fixed-layout td:first-child,
+.table-summary th:first-child,
+.table-summary td:first-child {
+    width: 34%;
+}
+
+/* Tabla de resumen con bold */
+.table-summary thead th:first-child,
+.table-summary thead th:last-child,
+.table-summary tbody td:first-child,
+.table-summary tbody td:last-child {
+    font-weight: 700;
+}
+
+.table-summary tbody td:last-child .eqd2-ok,
+.table-summary tbody td:last-child .eqd2-warn {
+    font-weight: 700;
+}
+
+/* Tabla de resumen con bordes más gruesos */
+.table-summary th,
+.table-summary td {
+    border: 2px solid rgba(255,255,255,.35);
+}
+
+.table-summary {
+    border: 3px solid rgba(255,255,255,.5);
+}
+
+/* Secciones */
+.section {
+    margin-top: 22px;
+}
+
+/* Textos auxiliares */
+.note {
+    color: #94a3b8;
+    font-size: calc(12px + var(--inc));
+}
+
+.small {
+    font-size: calc(12px + var(--inc));
+    color: var(--muted);
+}
+
+/* Estados de validación */
+.warn {
+    color: var(--err);
+    font-weight: 600;
+}
+
+.ok {
+    color: var(--ok);
+    font-weight: 600;
+}
+
+.eqd2-ok {
+    color: #34d399;
+    font-weight: 600;
+}
+
+.eqd2-warn {
+    color: #f87171;
+    font-weight: 600;
+}
+
+/* Información del paciente */
+.patient-info {
+    font-size: calc(16px + var(--inc));
+    color: #fb923c;
+    font-weight: 600;
+    margin: 6px 0 12px 0;
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: calc(28px + var(--inc));
+    margin-left: 4px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* Select */
+select.input {
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 10px;
+        margin: 20px auto;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 6px;
+    }
+}
