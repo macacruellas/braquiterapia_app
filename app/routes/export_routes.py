@@ -28,9 +28,9 @@ def _format_fechas_es(date_strings):
     """
     Recibe una lista de strings 'YYYY-MM-DD' y devuelve una cadena en español.
     Ej: ['2020-10-20','2020-10-22','2020-10-27','2020-10-29']
-        -> '20, 22, 27 y 29 de Octubre de 2020'
+        -> '20, 22, 27 y 29 de octubre de 2020'
     Si los días abarcan distintos meses:
-        -> '20 de Octubre y 3 de Noviembre de 2020'
+        -> '20 de octubre y 3 de noviembre de 2020'
     """
     parsed = []
     for s in date_strings:
@@ -53,7 +53,7 @@ def _format_fechas_es(date_strings):
     )
 
     if mismo_mes_anio:
-        mes  = _MESES_ES[parsed[0].month - 1].capitalize()
+        mes  = _MESES_ES[parsed[0].month - 1]
         anio = parsed[0].year
         dias = [str(d.day) for d in parsed]
         if len(dias) == 1:
@@ -61,7 +61,7 @@ def _format_fechas_es(date_strings):
         return f"{', '.join(dias[:-1])} y {dias[-1]} de {mes} de {anio}"
     else:
         partes = [
-            f"{d.day} de {_MESES_ES[d.month - 1].capitalize()} de {d.year}"
+            f"{d.day} de {_MESES_ES[d.month - 1]} de {d.year}"
             for d in parsed
         ]
         if len(partes) == 1:
@@ -333,8 +333,17 @@ def export_informe():
         except ValueError:
             pass
 
-    # Fechas de tratamiento (E26)
-    raw_fechas = [request.form.get(f"inf_fecha_{i}", "") for i in range(1, 5)]
+    # Fechas de tratamiento (E26) — reconstruir YYYY-MM-DD desde día/mes/año
+    raw_fechas = []
+    for i in range(1, 5):
+        d = request.form.get(f"inf_fecha_{i}_d", "").strip()
+        m = request.form.get(f"inf_fecha_{i}_m", "").strip()
+        y = request.form.get(f"inf_fecha_{i}_y", "").strip()
+        if d and m and y:
+            try:
+                raw_fechas.append(f"{int(y):04d}-{int(m):02d}-{int(d):02d}")
+            except ValueError:
+                pass
     fechas_str = _format_fechas_es(raw_fechas)
     if fechas_str:
         write_to_excel_cell(wb, ws.title, "E26", fechas_str, 'left')
