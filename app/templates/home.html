@@ -383,28 +383,31 @@
         <!-- Fechas de tratamiento (E26) -->
         <div style="margin-top:14px;">
           <label style="margin-bottom:8px;">Fechas de tratamiento</label>
-          <p class="small" style="margin:0 0 8px 0;">Día / Mes / Año</p>
           <div id="fechas-container" style="display:flex; flex-direction:column; gap:8px;">
-
-            {% for n in [1,2,3,4] %}
-            <div class="fecha-row" style="display:{% if n == 1 %}flex{% else %}none{% endif %}; align-items:center; gap:6px;">
-              <input class="input" type="number" name="inf_fecha_{{n}}_d" min="1" max="31" step="1"
-                     placeholder="Día" style="width:68px; text-align:center;">
-              <span class="small">/</span>
-              <input class="input" type="number" name="inf_fecha_{{n}}_m" min="1" max="12" step="1"
-                     placeholder="Mes" style="width:68px; text-align:center;">
-              <span class="small">/</span>
-              <input class="input" type="number" name="inf_fecha_{{n}}_y" min="2000" max="2100" step="1"
-                     placeholder="Año" style="width:88px; text-align:center;">
-              {% if n > 1 %}
+            <div class="fecha-row" style="display:flex; align-items:center; gap:8px;">
+              <input class="input" type="date" name="inf_fecha_1" style="flex:1;">
+            </div>
+            <div class="fecha-row" style="display:none; align-items:center; gap:8px;">
+              <input class="input" type="date" name="inf_fecha_2" style="flex:1;">
               <button type="button" onclick="removeFecha(this)"
                 style="background:transparent; border:1px solid rgba(248,113,113,.4);
                        color:#f87171; border-radius:8px; padding:6px 11px;
                        cursor:pointer; font-size:1em; line-height:1; flex-shrink:0;">×</button>
-              {% endif %}
             </div>
-            {% endfor %}
-
+            <div class="fecha-row" style="display:none; align-items:center; gap:8px;">
+              <input class="input" type="date" name="inf_fecha_3" style="flex:1;">
+              <button type="button" onclick="removeFecha(this)"
+                style="background:transparent; border:1px solid rgba(248,113,113,.4);
+                       color:#f87171; border-radius:8px; padding:6px 11px;
+                       cursor:pointer; font-size:1em; line-height:1; flex-shrink:0;">×</button>
+            </div>
+            <div class="fecha-row" style="display:none; align-items:center; gap:8px;">
+              <input class="input" type="date" name="inf_fecha_4" style="flex:1;">
+              <button type="button" onclick="removeFecha(this)"
+                style="background:transparent; border:1px solid rgba(248,113,113,.4);
+                       color:#f87171; border-radius:8px; padding:6px 11px;
+                       cursor:pointer; font-size:1em; line-height:1; flex-shrink:0;">×</button>
+            </div>
           </div>
           <button type="button" id="btn-agregar-fecha" onclick="agregarFecha()"
             style="margin-top:8px; background:transparent;

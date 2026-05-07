@@ -6,7 +6,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     initRTCheckbox();
     initSessionSelector();
+    scrollToResult();
 });
+
+/**
+ * Tras un POST (carga de archivo / cálculo), hace scroll al bloque de
+ * resultados más reciente para que el usuario no vuelva al inicio de la página.
+ * Prioridad: resumen > paso2 (HDR) > paso1 (Eclipse/manual).
+ */
+function scrollToResult() {
+    const target =
+        document.getElementById('resultado-resumen') ||
+        document.getElementById('resultado-paso2') ||
+        document.getElementById('resultado-paso1');
+
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
 
 /**
  * Maneja el checkbox de RT local vs manual
@@ -83,6 +100,36 @@ function initSessionSelector() {
     
     select.addEventListener('change', updateVisibility);
     updateVisibility(); // Llamar una vez al inicio
+}
+
+/**
+ * Muestra el siguiente campo de fecha oculto (máx. 4).
+ */
+function agregarFecha() {
+    const rows = document.querySelectorAll('.fecha-row');
+    for (let row of rows) {
+        if (row.style.display === 'none') {
+            row.style.display = 'flex';
+            const visible = [...rows].filter(r => r.style.display !== 'none').length;
+            if (visible >= 4) {
+                const btn = document.getElementById('btn-agregar-fecha');
+                if (btn) btn.style.display = 'none';
+            }
+            return;
+        }
+    }
+}
+
+/**
+ * Oculta y limpia el campo de fecha de la fila indicada.
+ */
+function removeFecha(btn) {
+    const row = btn.closest('.fecha-row');
+    const input = row.querySelector('input[type="date"]');
+    if (input) input.value = '';
+    row.style.display = 'none';
+    const addBtn = document.getElementById('btn-agregar-fecha');
+    if (addBtn) addBtn.style.display = 'inline-block';
 }
 
 /**
